@@ -1,37 +1,47 @@
 package ru.gb.sbootmarket.entity;
 
-public class Product {
-    private long id;
-    private String title;
-    private float cost;
+import javax.persistence.*;
 
-    public Product(long id, String title, float cost) {
-        this.id = id;
-        this.title = title;
-        this.cost = cost;
+@Entity
+@Table(name = "product")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    public Product() {
+        id = -1L;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(name = "title", nullable = false)
+    private String title;
+
     public String getTitle() {
         return title;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @Column(name = "cost", nullable = false)
+    private float cost;
+
+    public float getCost() {
+        return cost;
+    }
+
     public void setCost(float cost) {
         this.cost = cost;
     }
+
 }

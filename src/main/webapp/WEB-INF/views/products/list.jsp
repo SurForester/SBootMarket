@@ -12,7 +12,8 @@
 <body>
 <ul>
     <c:forEach var="item" items="${products}">
-    <li>ProductID=${item.id}; ProductTitle=${item.title}; ProductCost=${item.cost}</li>
+    <li>ProductID=${item.id}; ProductTitle=${item.title}; ProductCost=${item.cost}
+        <a href="${pageContext.request.contextPath}/products/delete/${item.id}">Удалить</a></li>
     </c:forEach>
 </body>
 
