@@ -10,7 +10,7 @@ public class HomeController {
 
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public String index(Model model) {
-        String message = "Sample Spring Boot + JSP project.";
+        String message = "Sample Spring Boot + JSP project + Hibernate.";
         model.addAttribute("message", message);
         return "index";
     }
