@@ -1,7 +1,6 @@
 package ru.gb.sbootmarket.dao;
 
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.gb.sbootmarket.entity.Product;
 
@@ -10,14 +9,14 @@ import java.util.List;
 @Component
 public class ProductsDAO {
 
-    private final SessionFactoryProducts sessionFactoryProducts;
+    private final MarketSessionFactory marketSessionFactory;
 
-    public ProductsDAO(SessionFactoryProducts sessionFactoryProducts) {
-        this.sessionFactoryProducts = sessionFactoryProducts;
+    public ProductsDAO(MarketSessionFactory marketSessionFactory) {
+        this.marketSessionFactory = marketSessionFactory;
     }
 
     public List<Product> findAll() {
-        try(Session session = sessionFactoryProducts.getSession()) {
+        try(Session session = marketSessionFactory.getSession()) {
             session.beginTransaction();
             List<Product> list = (List<Product>) session.createQuery("from Product").getResultList();
             session.getTransaction().commit();
@@ -26,7 +25,7 @@ public class ProductsDAO {
     }
 
     public Product findById(long id) {
-        try(Session session = sessionFactoryProducts.getSession()) {
+        try(Session session = marketSessionFactory.getSession()) {
             session.beginTransaction();
             Product product = session.get(Product.class, id);
             session.getTransaction().commit();
@@ -35,7 +34,7 @@ public class ProductsDAO {
     }
 
     public void saveOrUpdate(Product product) {
-        try(Session session = sessionFactoryProducts.getSession()) {
+        try(Session session = marketSessionFactory.getSession()) {
             session.beginTransaction();
             session.saveOrUpdate(product);
             session.getTransaction().commit();
@@ -43,7 +42,7 @@ public class ProductsDAO {
     }
 
     public void delete(Product product) {
-        try(Session session = sessionFactoryProducts.getSession()) {
+        try(Session session = marketSessionFactory.getSession()) {
             session.beginTransaction();
             session.delete(product);
             session.getTransaction().commit();
@@ -51,7 +50,7 @@ public class ProductsDAO {
     }
 
     public void deleteById(long id) {
-        try(Session session = sessionFactoryProducts.getSession()) {
+        try(Session session = marketSessionFactory.getSession()) {
             session.beginTransaction();
             Product product = session.get(Product.class, id);
             session.delete(product);

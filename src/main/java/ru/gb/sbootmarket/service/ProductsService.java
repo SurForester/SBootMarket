@@ -12,8 +12,6 @@ public class ProductsService {
 
     private ProductsDAO productsDAO;
 
-    public ProductsService() {}
-
     @Autowired
     public void setProductDAO(ProductsDAO productsDAO) {
         this.productsDAO = productsDAO;

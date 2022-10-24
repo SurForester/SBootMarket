@@ -1,6 +1,7 @@
 package ru.gb.sbootmarket.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -42,6 +43,14 @@ public class Product {
 
     public void setCost(float cost) {
         this.cost = cost;
+    }
+
+    @OneToMany(mappedBy = "product")
+    List<Order> orderList;
+
+    @Override
+    public String toString() {
+        return " PRODUCT [id=" + id + ", title=" + title + ", cost=" + cost + "]";
     }
 
 }
