@@ -11,8 +11,9 @@
 <h1>Welcome</h1>
 <h2>${message}</h2>
 
-<a href="${pageContext.request.contextPath}/products/list">Список продуктов</a>
-
 </body>
-
+<footer>
+    <a href="${pageContext.request.contextPath}/products/">К списку продуктов</a>
+    <a href="${pageContext.request.contextPath}/buyers/">К списку покупателей</a>
+</footer>
 </html>
